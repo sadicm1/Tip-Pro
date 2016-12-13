@@ -21,12 +21,12 @@ class ViewController: UIViewController {
     // Do any additional setup after loading the view, typically from a nib.
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+  override var preferredStatusBarStyle : UIStatusBarStyle {
+    return .lightContent
   }
 
 
-  @IBAction func calculateTip(sender: UIButton) {
+  @IBAction func calculateTip(_ sender: UIButton) {
     guard let billAmount = Double(billAmountField.text!) else {
       billAmountField.text = ""
       tipAmountField.text = ""
@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     let roundedTipAmount = round(100*tipAmount) / 100
     let totalAmount = roundedBillAmount + roundedTipAmount
     
-    if !billAmountField.editing {
+    if !billAmountField.isEditing {
       billAmountField.text = String(format: "%.2f", roundedBillAmount)
     }
     tipAmountField.text = String(format: "%.2f", roundedTipAmount)
